@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Formula;
+
+import java.util.Set;
 
 @Data
 @Entity
@@ -26,7 +29,10 @@ public class Student {
     private int year;
 
     // niechcemy aby to byla kolumna
-    private double avgGrade;
-
+    @Formula("(SELECT AVG(o.value) FROM ocena o WHERE o.student_id=id)")
+    private Double avgGrade;
+    //Relacje
+    @OneToMany(mappedBy = "student") // nazwa pola
+    private Set<Ocena> grades;
 
 }

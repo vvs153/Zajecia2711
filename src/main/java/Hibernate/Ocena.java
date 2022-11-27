@@ -1,9 +1,6 @@
 package Hibernate;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,5 +22,8 @@ public class Ocena {
     private double value;
     @CreationTimestamp //odpowiednik SQL now()
     private LocalDateTime addTime;
+//Relacje
+    @ManyToOne
+    private Student student;
 
 }
