@@ -18,8 +18,12 @@ public class MainADDGrade {
                 System.out.println("Podaj ocene");
                 String ocenaString = scanner.nextLine();
                 Double ocenaValue = Double.parseDouble(ocenaString);
+                System.out.println("Podaj przedmiot");
+                String przedmiotOceny = scanner.nextLine();
+                Przedmiot przedmiot = Przedmiot.valueOf(przedmiotOceny);
                 Ocena ocena = Ocena.builder()
                         .student(studentCheck)
+                        .przedmiot(przedmiot)
                         .value(ocenaValue)
                         .build();
                 session.persist(ocena);

@@ -1,10 +1,7 @@
 package Hibernate;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
@@ -22,8 +19,11 @@ public class Ocena {
     private double value;
     @CreationTimestamp //odpowiednik SQL now()
     private LocalDateTime addTime;
+    @Enumerated(value = EnumType.STRING)  //aby zachowac kolejnosc enuma
+    private Przedmiot przedmiot;
 //Relacje
     @ManyToOne
+    @EqualsAndHashCode.Exclude
     private Student student;
 
 }
